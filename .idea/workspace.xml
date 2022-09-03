@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f3b7050-56af-443b-8851-650d8da5ed80" name="Changes" comment="create main-view.fxml">
+    <list default="true" id="0f3b7050-56af-443b-8851-650d8da5ed80" name="Changes" comment="add menu to main view">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/MainViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/udemy/employeemanagementsystem/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/udemy/employeemanagementsystem/main-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,16 +35,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
-    <configuration name="com.udemy.employeemanagementsystem.HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.udemy.employeemanagementsystem.HelloApplication" />
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.udemy.employeemanagementsystem.Main" />
       <module name="employee-management-system" />
       <extension name="coverage">
         <pattern>
@@ -55,7 +58,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.com.udemy.employeemanagementsystem.HelloApplication" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -75,7 +78,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662136587510</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add menu to main view">
+      <created>1662154137362</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1662154137362</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -91,6 +101,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="create main-view.fxml" />
-    <option name="LAST_COMMIT_MESSAGE" value="create main-view.fxml" />
+    <MESSAGE value="add menu to main view" />
+    <option name="LAST_COMMIT_MESSAGE" value="add menu to main view" />
   </component>
 </project>

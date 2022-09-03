@@ -61,7 +61,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.udemy.employeemanagementsystem/com.udemy.employeemanagementsystem.HelloApplication
+                                com.udemy.employeemanagementsystem/com.udemy.employeemanagementsystem.Main
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
