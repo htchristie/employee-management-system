@@ -1,6 +1,7 @@
 package com.udemy.employeemanagementsystem.controller;
 
 import com.udemy.employeemanagementsystem.Main;
+import com.udemy.employeemanagementsystem.model.services.DepartmentService;
 import com.udemy.employeemanagementsystem.util.Alerts;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,7 +36,7 @@ public class MainViewController implements Initializable {
     @FXML
     protected void onMenuItemDepartmentSelected() {
 
-        loadView("department-list.fxml");
+        loadDepartmentTableView("department-list.fxml");
     }
 
     @FXML
@@ -61,6 +62,29 @@ public class MainViewController implements Initializable {
             mainVbox.getChildren().clear(); // clears all children
             mainVbox.getChildren().add(mainMenu);
             mainVbox.getChildren().addAll(newVBox.getChildren());
+
+        } catch (IOException e) {
+            Alerts.showAlert("IO Exception", "Error loading View", e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+
+    public synchronized void loadDepartmentTableView(String viewPath) {
+        // synchronized -> guarantees that the multi-thread process won't be interrupted
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource(viewPath));
+            VBox newVBox = loader.load();
+
+            Scene mainScene = Main.getMainScene();
+            VBox mainVbox = (VBox)((ScrollPane) mainScene.getRoot()).getContent();
+
+            Node mainMenu = mainVbox.getChildren().get(0); // gets menu
+            mainVbox.getChildren().clear(); // clears all children
+            mainVbox.getChildren().add(mainMenu);
+            mainVbox.getChildren().addAll(newVBox.getChildren());
+
+            DepartmentListController controller = loader.getController();
+            controller.setDepartmentService(new DepartmentService());
+            controller.updateTableView();
 
         } catch (IOException e) {
             Alerts.showAlert("IO Exception", "Error loading View", e.getMessage(), Alert.AlertType.ERROR);
