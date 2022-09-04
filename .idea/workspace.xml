@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f3b7050-56af-443b-8851-650d8da5ed80" name="Changes" comment="add about view">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/controllers/DepartmentListController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/udemy/employeemanagementsystem/department-list.fxml" afterDir="false" />
+    <list default="true" id="0f3b7050-56af-443b-8851-650d8da5ed80" name="Changes" comment="add department list view design">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/model/entities/Department.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/controllers/AboutViewController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/controllers/DepartmentListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/controller/DepartmentListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/controllers/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/controller/MainViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/udemy/employeemanagementsystem/department-list.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/udemy/employeemanagementsystem/department-list.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/udemy/employeemanagementsystem/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/udemy/employeemanagementsystem/main-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +52,7 @@
       <module name="employee-management-system" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.udemy.employeemanagementsystem.controllers.*" />
+          <option name="PATTERN" value="com.udemy.employeemanagementsystem.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -104,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662250164552</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="add department list view design">
+      <created>1662250560180</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1662250560180</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -124,6 +137,7 @@
     <MESSAGE value="add main view controller" />
     <MESSAGE value="add alerts and constrains util classes" />
     <MESSAGE value="add about view" />
-    <option name="LAST_COMMIT_MESSAGE" value="add about view" />
+    <MESSAGE value="add department list view design" />
+    <option name="LAST_COMMIT_MESSAGE" value="add department list view design" />
   </component>
 </project>

@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.udemy.employeemanagementsystem.controllers.MainViewController">
+<ScrollPane fitToHeight="true" fitToWidth="true" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.udemy.employeemanagementsystem.controller.MainViewController">
     <VBox prefHeight="382.0" prefWidth="585.0">
         <MenuBar>
             <Menu mnemonicParsing="false" text="Register">

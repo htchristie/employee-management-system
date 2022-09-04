@@ -1,4 +1,4 @@
-package com.udemy.employeemanagementsystem.controllers;
+package com.udemy.employeemanagementsystem.controller;
 
 import com.udemy.employeemanagementsystem.Main;
 import com.udemy.employeemanagementsystem.util.Alerts;
@@ -34,7 +34,8 @@ public class MainViewController implements Initializable {
 
     @FXML
     protected void onMenuItemDepartmentSelected() {
-        System.out.println("You selected department");
+
+        loadView("department-list.fxml");
     }
 
     @FXML

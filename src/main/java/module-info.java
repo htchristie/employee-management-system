@@ -5,6 +5,6 @@ module com.udemy.employeemanagementsystem {
 
     opens com.udemy.employeemanagementsystem to javafx.fxml;
     exports com.udemy.employeemanagementsystem;
-    exports com.udemy.employeemanagementsystem.controllers;
-    opens com.udemy.employeemanagementsystem.controllers to javafx.fxml;
+    exports com.udemy.employeemanagementsystem.controller;
+    opens com.udemy.employeemanagementsystem.controller to javafx.fxml;
 }
