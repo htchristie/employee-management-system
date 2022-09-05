@@ -5,20 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f3b7050-56af-443b-8851-650d8da5ed80" name="Changes" comment="adding database access">
-      <change afterPath="$PROJECT_DIR$/db.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/db/DB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/db/DbException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/db/DbIntegrityException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/model/dao/DaoFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/model/dao/DepartmentDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/model/dao/SellerDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/model/dao/impl/DepartmentDaoJDBC.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/model/dao/impl/SellerDaoJDBC.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/model/entities/Seller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/controller/DepartmentFormController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/util/Utils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/udemy/employeemanagementsystem/department-form.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/model/services/DepartmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/model/services/DepartmentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/controller/DepartmentListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/controller/DepartmentListController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662395348902</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="adding database access">
+      <created>1662403011413</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1662403011413</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
