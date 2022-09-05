@@ -1,6 +1,7 @@
 module com.udemy.employeemanagementsystem {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
 
 
     opens com.udemy.employeemanagementsystem to javafx.fxml;
