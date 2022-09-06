@@ -3,6 +3,7 @@ package com.udemy.employeemanagementsystem.controller;
 import com.udemy.employeemanagementsystem.db.DbException;
 import com.udemy.employeemanagementsystem.listener.DataChangeListener;
 import com.udemy.employeemanagementsystem.model.entities.Department;
+import com.udemy.employeemanagementsystem.model.exceptions.ValidationException;
 import com.udemy.employeemanagementsystem.model.services.DepartmentService;
 import com.udemy.employeemanagementsystem.util.Alerts;
 import com.udemy.employeemanagementsystem.util.Constraints;
@@ -16,9 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class DepartmentFormController implements Initializable {
     // Initializable - Controller initialization interface.
@@ -74,6 +73,9 @@ public class DepartmentFormController implements Initializable {
         catch (DbException e) {
             Alerts.showAlert("Error saving department", null, e.getMessage(), Alert.AlertType.ERROR);
         }
+        catch (ValidationException e) {
+            setErrorMsgs(e.getErrors());
+        }
     }
 
     @FXML
@@ -98,10 +100,29 @@ public class DepartmentFormController implements Initializable {
 
     private Department getFormData() {
         Department dep = new Department();
+        ValidationException exception = new ValidationException("Validation error.");
+
         dep.setId(Utils.parseToInt(txtDepId.getText()));
+
+        if (txtDepName.getText() == null || txtDepName.getText().trim().equals("")) {
+            exception.addError("name", "Field can't be empty.");
+        }
+
         dep.setName(txtDepName.getText());
 
+        if (exception.getErrors().size() > 0) {
+            throw exception;
+        }
+
         return dep;
+    }
+
+    private void setErrorMsgs(Map<String, String> errors) {
+        Set<String> fields = errors.keySet();
+
+        if (fields.contains("name")) {
+            labelDepNameError.setText(errors.get("name"));
+        }
     }
 
     private void notifyDataChangeListeners() {
