@@ -1,5 +1,6 @@
 package com.udemy.employeemanagementsystem.controller;
 
+import com.udemy.employeemanagementsystem.model.entities.Department;
 import com.udemy.employeemanagementsystem.util.Constraints;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,6 +13,8 @@ import java.util.ResourceBundle;
 
 public class DepartmentFormController implements Initializable {
     // Initializable - Controller initialization interface.
+
+    private Department department;
 
     @FXML
     private TextField txtDepId;
@@ -28,6 +31,10 @@ public class DepartmentFormController implements Initializable {
     @FXML
     private Button btnDepCancel;
 
+    public void setDepartment(Department entity) {
+        this.department = entity;
+    }
+
     @FXML
     public void onBtnDepSaveClick() {
         System.out.println("save");
@@ -41,6 +48,15 @@ public class DepartmentFormController implements Initializable {
     private void initializeNodes() {
         Constraints.setTextFieldInteger(txtDepId);
         Constraints.setTextFieldMaxLength(txtDepName, 30);
+    }
+
+    public void updateFormData() {
+        if (department == null) {
+            throw new IllegalStateException("Department entity is null.");
+        }
+
+        txtDepId.setText(String.valueOf(department.getId()));
+        txtDepName.setText(String.valueOf(department.getName()));
     }
 
     @Override
