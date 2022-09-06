@@ -1,6 +1,7 @@
 package com.udemy.employeemanagementsystem.controller;
 
 import com.udemy.employeemanagementsystem.db.DbException;
+import com.udemy.employeemanagementsystem.listener.DataChangeListener;
 import com.udemy.employeemanagementsystem.model.entities.Department;
 import com.udemy.employeemanagementsystem.model.services.DepartmentService;
 import com.udemy.employeemanagementsystem.util.Alerts;
@@ -15,6 +16,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class DepartmentFormController implements Initializable {
@@ -22,6 +25,7 @@ public class DepartmentFormController implements Initializable {
 
     private Department department;
     private DepartmentService service;
+    private List<DataChangeListener> listeners = new ArrayList<>();
 
     @FXML
     private TextField txtDepId;
@@ -46,6 +50,10 @@ public class DepartmentFormController implements Initializable {
         this.service = service;
     }
 
+    public void assignDataChangeListener(DataChangeListener listener) {
+        listeners.add(listener);
+    }
+
     @FXML
     public void onBtnDepSaveClick(ActionEvent event) {
 
@@ -60,6 +68,7 @@ public class DepartmentFormController implements Initializable {
         try {
             department = getFormData();
             service.saveOrUpdate(department);
+            notifyDataChangeListeners();
             Utils.currentStage(event).close(); //closes form
         }
         catch (DbException e) {
@@ -93,6 +102,12 @@ public class DepartmentFormController implements Initializable {
         dep.setName(txtDepName.getText());
 
         return dep;
+    }
+
+    private void notifyDataChangeListeners() {
+        for (DataChangeListener listener: listeners) {
+            listener.onDataChanged();
+        }
     }
 
     @Override

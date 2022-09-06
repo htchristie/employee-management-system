@@ -1,6 +1,7 @@
 package com.udemy.employeemanagementsystem.controller;
 
 import com.udemy.employeemanagementsystem.Main;
+import com.udemy.employeemanagementsystem.listener.DataChangeListener;
 import com.udemy.employeemanagementsystem.model.entities.Department;
 import com.udemy.employeemanagementsystem.model.services.DepartmentService;
 import com.udemy.employeemanagementsystem.util.Alerts;
@@ -26,7 +27,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class DepartmentListController implements Initializable {
+public class DepartmentListController implements Initializable, DataChangeListener {
 
     private DepartmentService departmentService;
     private ObservableList<Department> departmentObservableList;
@@ -90,6 +91,7 @@ public class DepartmentListController implements Initializable {
             DepartmentFormController controller = loader.getController();
             controller.setDepartment(department);
             controller.setDepartmentService(new DepartmentService());
+            controller.assignDataChangeListener(this);
             controller.updateFormData();
 
             Stage dialogStage = new Stage();
@@ -104,5 +106,10 @@ public class DepartmentListController implements Initializable {
             System.out.println(e.getMessage());
             Alerts.showAlert("IO Exception", "Error loading View", e.getMessage(), Alert.AlertType.ERROR);
         }
+    }
+
+    @Override
+    public void onDataChanged() {
+        updateTableView();
     }
 }
