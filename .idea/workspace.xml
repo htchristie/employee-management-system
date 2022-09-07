@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f3b7050-56af-443b-8851-650d8da5ed80" name="Changes" comment="applying observer design pattern to update department table view">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/model/exceptions/ValidationException.java" afterDir="false" />
+    <list default="true" id="0f3b7050-56af-443b-8851-650d8da5ed80" name="Changes" comment="validation exception">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/controller/DepartmentFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/controller/DepartmentFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/controller/DepartmentListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/controller/DepartmentListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/udemy/employeemanagementsystem/department-list.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/udemy/employeemanagementsystem/department-list.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662493827905</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="validation exception">
+      <created>1662494995917</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1662494995917</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -218,6 +225,7 @@
     <MESSAGE value="update module-info" />
     <MESSAGE value="saving a new department from forms" />
     <MESSAGE value="applying observer design pattern to update department table view" />
-    <option name="LAST_COMMIT_MESSAGE" value="applying observer design pattern to update department table view" />
+    <MESSAGE value="validation exception" />
+    <option name="LAST_COMMIT_MESSAGE" value="validation exception" />
   </component>
 </project>
