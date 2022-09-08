@@ -18,6 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -34,10 +35,19 @@ public class EmployeeListController implements Initializable, DataChangeListener
     private TableView<Employee> employeeTableView;
 
     @FXML
-    private TableColumn<Employee, Integer> employeeIntegerTableColumn;
+    private TableColumn<Employee, Integer> employeeIdTableColumn;
 
     @FXML
-    private TableColumn<Employee, String> employeeStringTableColumn;
+    private TableColumn<Employee, String> employeeNameTableColumn;
+
+    @FXML
+    private TableColumn<Employee, String> employeeEmailTableColumn;
+
+    @FXML
+    private TableColumn<Employee, Date> employeeBirthdateTableColumn;
+
+    @FXML
+    private TableColumn<Employee, Double> employeeSalaryTableColumn;
 
     @FXML
     private TableColumn<Employee, Employee> tableColumnEdit;
@@ -162,8 +172,13 @@ public class EmployeeListController implements Initializable, DataChangeListener
 
     private void initializeNodes() {
         // initialize table elements
-        employeeIntegerTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-        employeeStringTableColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        employeeIdTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        employeeNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        employeeEmailTableColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+        employeeBirthdateTableColumn.setCellValueFactory(new PropertyValueFactory<>("birthdate"));
+        Utils.formatTableColumnDate(employeeBirthdateTableColumn, "dd/MM/yyyy");
+        employeeSalaryTableColumn.setCellValueFactory(new PropertyValueFactory<>("baseSalary"));
+        Utils.formatTableColumnDouble(employeeSalaryTableColumn, 2);
 
         Stage stage = (Stage) Main.getMainScene().getWindow();
 

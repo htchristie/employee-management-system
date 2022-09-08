@@ -29,8 +29,11 @@
         </ToolBar>
         <TableView fx:id="employeeTableView" prefHeight="298.0" prefWidth="600.0">
             <columns>
-                <TableColumn fx:id="employeeIntegerTableColumn" prefWidth="75.0" text="Id" />
-                <TableColumn fx:id="employeeStringTableColumn" prefWidth="75.0" text="Name" />
+                <TableColumn fx:id="employeeIdTableColumn" prefWidth="75.0" text="Id" />
+                <TableColumn fx:id="employeeNameTableColumn" prefWidth="75.0" text="Name" />
+                <TableColumn fx:id="employeeEmailTableColumn" prefWidth="75.0" text="Email" />
+                <TableColumn fx:id="employeeBirthdateTableColumn" prefWidth="75.0" text="Birthdate" />
+                <TableColumn fx:id="employeeSalaryTableColumn" prefWidth="75.0" text="Base Salary" />
                 <TableColumn fx:id="tableColumnEdit" prefWidth="75.0" />
                 <TableColumn fx:id="tableColumnDelete" prefWidth="75.0" />
             </columns>
