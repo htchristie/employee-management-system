@@ -12,11 +12,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.List;
@@ -81,18 +86,18 @@ public class EmployeeListController implements Initializable, DataChangeListener
     }
 
     private void createDialogForm(Employee employee, String viewPath, Stage parentStage) {
-        /* try {
+        try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource(viewPath));
             Pane pane = loader.load();
 
-            DepartmentFormController controller = loader.getController();
-            controller.setDepartment(department);
-            controller.setDepartmentService(new DepartmentService());
+            EmployeeFormController controller = loader.getController();
+            controller.setEmployee(employee);
+            controller.setEmployeeService(new EmployeeService());
             controller.assignDataChangeListener(this);
             controller.updateFormData();
 
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Enter Department data:");
+            dialogStage.setTitle("Enter Employee data:");
             dialogStage.setScene(new Scene(pane));
             dialogStage.setResizable(false);
             dialogStage.initOwner(parentStage);
@@ -102,7 +107,7 @@ public class EmployeeListController implements Initializable, DataChangeListener
         catch (IOException e) {
             System.out.println(e.getMessage());
             Alerts.showAlert("IO Exception", "Error loading View", e.getMessage(), Alert.AlertType.ERROR);
-        }*/
+        }
     }
 
     private void initEditButtons() {

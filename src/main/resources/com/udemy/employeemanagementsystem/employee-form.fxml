@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane prefHeight="229.0" prefWidth="626.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.udemy.employeemanagementsystem.controller.EmployeeFormController">
+    <children>
+        <GridPane layoutX="23.0" layoutY="44.0" prefHeight="265.0" prefWidth="575.0" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="24.0">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="124.0" minWidth="3.0000057220458984" prefWidth="76.99997965494791" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="356.3333276112875" minWidth="10.0" prefWidth="241.66668701171878" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="297.0" minWidth="10.0" prefWidth="246.0" />
+            <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" />
+            </rowConstraints>
+            <children>
+                <Label text="Id:" textAlignment="RIGHT">
+                    <GridPane.margin>
+                        <Insets right="8.0" />
+                    </GridPane.margin></Label>
+                <Label text="Name:" textAlignment="RIGHT" GridPane.rowIndex="1">
+                    <GridPane.margin>
+                        <Insets right="8.0" />
+                    </GridPane.margin></Label>
+                <Label text="Email:" textAlignment="RIGHT" GridPane.rowIndex="2">
+                    <GridPane.margin>
+                        <Insets right="8.0" />
+                    </GridPane.margin></Label>
+                <Label text="Birthdate:" textAlignment="RIGHT" GridPane.rowIndex="3">
+                    <GridPane.margin>
+                        <Insets right="8.0" />
+                    </GridPane.margin></Label>
+                <Label text="Salary:" textAlignment="RIGHT" GridPane.rowIndex="4">
+                    <GridPane.margin>
+                        <Insets right="8.0" />
+                    </GridPane.margin></Label>
+                <TextField fx:id="txtEmpId" editable="false" GridPane.columnIndex="1" />
+                <TextField fx:id="txtEmpName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label fx:id="labelEmpNameError" textFill="#aa2525" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                    <GridPane.margin>
+                        <Insets left="8.0" />
+                    </GridPane.margin></Label>
+                <TextField fx:id="txtEmpEmail" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Label fx:id="labelEmpEmailError" textFill="#aa2525" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                    <GridPane.margin>
+                        <Insets left="8.0" />
+                    </GridPane.margin></Label>
+                <TextField fx:id="txtEmpBirthdate" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <Label fx:id="labelEmpBirthdateError" textFill="#aa2525" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                    <GridPane.margin>
+                        <Insets left="8.0" />
+                    </GridPane.margin></Label>
+                <TextField fx:id="txtEmpSalary" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <Label fx:id="labelEmpSalaryError" textFill="#aa2525" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                    <GridPane.margin>
+                        <Insets left="8.0" />
+                    </GridPane.margin></Label>
+                <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+                    <children>
+                        <Button fx:id="btnEmpSave" mnemonicParsing="false" onAction="#onBtnDepSaveClick" text="Save">
+                            <HBox.margin>
+                                <Insets right="8.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button fx:id="btnEmpCancel" mnemonicParsing="false" onAction="#onBtnDepCancelClick" text="Cancel" />
+                    </children>
+                </HBox>
+            </children>
+        </GridPane>
+    </children>
+</AnchorPane>
