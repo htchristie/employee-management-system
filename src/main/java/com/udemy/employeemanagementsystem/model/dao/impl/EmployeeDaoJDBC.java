@@ -2,9 +2,9 @@ package com.udemy.employeemanagementsystem.model.dao.impl;
 
 import com.udemy.employeemanagementsystem.db.DB;
 import com.udemy.employeemanagementsystem.db.DbException;
-import com.udemy.employeemanagementsystem.model.dao.SellerDao;
+import com.udemy.employeemanagementsystem.model.dao.EmployeeDao;
 import com.udemy.employeemanagementsystem.model.entities.Department;
-import com.udemy.employeemanagementsystem.model.entities.Seller;
+import com.udemy.employeemanagementsystem.model.entities.Employee;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,35 +12,35 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SellerDaoJDBC implements SellerDao {
-    //jdbc implementation of SellerDao interface
+public class EmployeeDaoJDBC implements EmployeeDao {
+    //jdbc implementation of EmployeeDao interface
 
     private Connection connection;
 
-    public SellerDaoJDBC(Connection connection) {
+    public EmployeeDaoJDBC(Connection connection) {
         // dependency injection
         this.connection = connection;
     }
 
     @Override
-    public void insert(Seller seller) {
+    public void insert(Employee employee) {
 
         PreparedStatement statement = null;
 
         try {
             statement = connection.prepareStatement(
-                    "INSERT INTO seller "
+                    "INSERT INTO employee "
                             + "(Name, Email, BirthDate, BaseSalary, DepartmentId) "
                             + "VALUES "
                             + "(?, ?, ?, ?, ?)",
                     statement.RETURN_GENERATED_KEYS
             );
 
-            statement.setString(1, seller.getName());
-            statement.setString(2, seller.getEmail());
-            statement.setDate(3, new Date(seller.getBirthdate().getTime()));
-            statement.setDouble(4, seller.getBaseSalary());
-            statement.setInt(5, seller.getDepartment().getId());
+            statement.setString(1, employee.getName());
+            statement.setString(2, employee.getEmail());
+            statement.setDate(3, new Date(employee.getBirthdate().getTime()));
+            statement.setDouble(4, employee.getBaseSalary());
+            statement.setInt(5, employee.getDepartment().getId());
 
             int rowsAffected = statement.executeUpdate();
             if (rowsAffected > 0) {
@@ -48,7 +48,7 @@ public class SellerDaoJDBC implements SellerDao {
 
                 if (resultSet.next()) {
                     int id = resultSet.getInt(1);
-                    seller.setId(id);
+                    employee.setId(id);
                 }
                 DB.closeResultSet(resultSet);
 
@@ -65,23 +65,23 @@ public class SellerDaoJDBC implements SellerDao {
     }
 
     @Override
-    public void update(Seller seller) {
+    public void update(Employee employee) {
 
         PreparedStatement statement = null;
 
         try {
             statement = connection.prepareStatement(
-                    "UPDATE seller "
+                    "UPDATE employee "
                             + "SET Name = ?, Email = ?, BirthDate = ?, BaseSalary = ?, DepartmentId = ? "
                             + "WHERE Id = ?"
             );
 
-            statement.setString(1, seller.getName());
-            statement.setString(2, seller.getEmail());
-            statement.setDate(3, new Date(seller.getBirthdate().getTime()));
-            statement.setDouble(4, seller.getBaseSalary());
-            statement.setInt(5, seller.getDepartment().getId());
-            statement.setInt(6, seller.getId());
+            statement.setString(1, employee.getName());
+            statement.setString(2, employee.getEmail());
+            statement.setDate(3, new Date(employee.getBirthdate().getTime()));
+            statement.setDouble(4, employee.getBaseSalary());
+            statement.setInt(5, employee.getDepartment().getId());
+            statement.setInt(6, employee.getId());
 
             statement.executeUpdate();
         }
@@ -122,7 +122,7 @@ public class SellerDaoJDBC implements SellerDao {
     }
 
     @Override
-    public Seller findById(Integer id) {
+    public Employee findById(Integer id) {
 
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -154,7 +154,7 @@ public class SellerDaoJDBC implements SellerDao {
     }
 
     @Override
-    public List<Seller> findAll() {
+    public List<Employee> findAll() {
 
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -169,7 +169,7 @@ public class SellerDaoJDBC implements SellerDao {
 
             resultSet = statement.executeQuery();
 
-            List<Seller> sellers = new ArrayList<>();
+            List<Employee> employees = new ArrayList<>();
             Map<Integer, Department> departmentMap = new HashMap<>();
 
             while (resultSet.next()) {
@@ -183,10 +183,10 @@ public class SellerDaoJDBC implements SellerDao {
                     departmentMap.put(resultSet.getInt("DepartmentId"), dep);
                 }
 
-                Seller seller = instantiateSeller(resultSet, dep);
-                sellers.add(seller);
+                Employee employee = instantiateSeller(resultSet, dep);
+                employees.add(employee);
             }
-            return sellers;
+            return employees;
         }
         catch (SQLException e) {
             throw new DbException(e.getMessage());
@@ -198,7 +198,7 @@ public class SellerDaoJDBC implements SellerDao {
     }
 
     @Override
-    public List<Seller> findByDepartment(Department department) {
+    public List<Employee> findByDepartment(Department department) {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
 
@@ -214,7 +214,7 @@ public class SellerDaoJDBC implements SellerDao {
             statement.setInt(1, department.getId());
             resultSet = statement.executeQuery();
 
-            List<Seller> sellers = new ArrayList<>();
+            List<Employee> employees = new ArrayList<>();
             Map<Integer, Department> departmentMap = new HashMap<>();
 
             while (resultSet.next()) {
@@ -228,10 +228,10 @@ public class SellerDaoJDBC implements SellerDao {
                     departmentMap.put(resultSet.getInt("DepartmentId"), dep);
                 }
 
-                Seller seller = instantiateSeller(resultSet, dep);
-                sellers.add(seller);
+                Employee employee = instantiateSeller(resultSet, dep);
+                employees.add(employee);
             }
-            return sellers;
+            return employees;
         }
         catch (SQLException e) {
             throw new DbException(e.getMessage());
@@ -242,16 +242,16 @@ public class SellerDaoJDBC implements SellerDao {
         }
     }
 
-    private Seller instantiateSeller(ResultSet resultSet, Department department) throws SQLException {
-        Seller seller = new Seller();
-        seller.setId(resultSet.getInt("Id"));
-        seller.setName(resultSet.getString("Name"));
-        seller.setEmail(resultSet.getString("Email"));
-        seller.setBaseSalary(resultSet.getDouble("BaseSalary"));
-        seller.setBirthdate(resultSet.getDate("BirthDate"));
-        seller.setDepartment(department);
+    private Employee instantiateSeller(ResultSet resultSet, Department department) throws SQLException {
+        Employee employee = new Employee();
+        employee.setId(resultSet.getInt("Id"));
+        employee.setName(resultSet.getString("Name"));
+        employee.setEmail(resultSet.getString("Email"));
+        employee.setBaseSalary(resultSet.getDouble("BaseSalary"));
+        employee.setBirthdate(resultSet.getDate("BirthDate"));
+        employee.setDepartment(department);
 
-        return seller;
+        return employee;
     }
 
     private Department instantiateDepartment(ResultSet resultSet) throws SQLException {

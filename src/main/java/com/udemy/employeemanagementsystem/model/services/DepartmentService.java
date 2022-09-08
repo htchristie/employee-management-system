@@ -4,7 +4,6 @@ import com.udemy.employeemanagementsystem.model.dao.DaoFactory;
 import com.udemy.employeemanagementsystem.model.dao.DepartmentDao;
 import com.udemy.employeemanagementsystem.model.entities.Department;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DepartmentService {

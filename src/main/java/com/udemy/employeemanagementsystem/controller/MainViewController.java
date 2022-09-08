@@ -2,6 +2,7 @@ package com.udemy.employeemanagementsystem.controller;
 
 import com.udemy.employeemanagementsystem.Main;
 import com.udemy.employeemanagementsystem.model.services.DepartmentService;
+import com.udemy.employeemanagementsystem.model.services.EmployeeService;
 import com.udemy.employeemanagementsystem.util.Alerts;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,7 +32,11 @@ public class MainViewController implements Initializable {
 
     @FXML
     protected void onMenuItemEmployeeSelected() {
-        System.out.println("You selected employee");
+
+        loadView("employee-list.fxml", (EmployeeListController controller) -> {
+            controller.setEmployeeService(new EmployeeService());
+            controller.updateTableView();
+        });
     }
 
     @FXML

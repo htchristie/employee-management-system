@@ -4,11 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f3b7050-56af-443b-8851-650d8da5ed80" name="Changes" comment="adding edit button to each department table view row">
+    <list default="true" id="0f3b7050-56af-443b-8851-650d8da5ed80" name="Changes" comment="adding remove button to each department table view row">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/controller/EmployeeListController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/model/services/EmployeeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/udemy/employeemanagementsystem/employee-list.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/controller/DepartmentListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/controller/DepartmentListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/controller/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/controller/MainViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/model/dao/DaoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/model/dao/DaoFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/model/dao/SellerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/model/dao/EmployeeDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/model/dao/impl/SellerDaoJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/model/dao/impl/EmployeeDaoJDBC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/model/entities/Seller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/model/entities/Employee.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/model/services/DepartmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/model/services/DepartmentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/util/Alerts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/udemy/employeemanagementsystem/util/Alerts.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -48,7 +55,7 @@
   }
 }</component>
   <component name="RunManager">
-    <configuration name="com.udemy.employeemanagementsystem.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.udemy.employeemanagementsystem.Main" />
       <module name="employee-management-system" />
       <extension name="coverage">
@@ -202,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662510859948</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="adding remove button to each department table view row">
+      <created>1662644405082</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1662644405082</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -235,6 +249,7 @@
     <MESSAGE value="applying observer design pattern to update department table view" />
     <MESSAGE value="validation exception" />
     <MESSAGE value="adding edit button to each department table view row" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding edit button to each department table view row" />
+    <MESSAGE value="adding remove button to each department table view row" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding remove button to each department table view row" />
   </component>
 </project>

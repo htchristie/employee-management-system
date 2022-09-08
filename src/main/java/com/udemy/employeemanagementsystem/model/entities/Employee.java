@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-public class Seller implements Serializable {
+public class Employee implements Serializable {
     private Integer id;
     private String name;
     private String email;
@@ -14,9 +14,9 @@ public class Seller implements Serializable {
     private Department department;
     // association to department class
 
-    public Seller () {}
+    public Employee() {}
 
-    public Seller(Integer id, String name, String email, Date birthdate, Double baseSalary, Department department) {
+    public Employee(Integer id, String name, String email, Date birthdate, Double baseSalary, Department department) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -77,8 +77,8 @@ public class Seller implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Seller seller = (Seller) o;
-        return getId().equals(seller.getId());
+        Employee employee = (Employee) o;
+        return getId().equals(employee.getId());
     }
 
     @Override
@@ -88,6 +88,6 @@ public class Seller implements Serializable {
 
     @Override
     public String toString() {
-        return "Seller{" + "id=" + id + ", name='" + name + '\'' + ", email='" + email + '\'' + ", birthdate=" + birthdate + ", baseSalary=" + baseSalary + ", department=" + department + '}';
+        return "Employee{" + "id=" + id + ", name='" + name + '\'' + ", email='" + email + '\'' + ", birthdate=" + birthdate + ", baseSalary=" + baseSalary + ", department=" + department + '}';
     }
 }
