@@ -1,6 +1,8 @@
 package com.udemy.employeemanagementsystem.controller;
 
 import com.udemy.employeemanagementsystem.Main;
+import com.udemy.employeemanagementsystem.db.DbException;
+import com.udemy.employeemanagementsystem.db.DbIntegrityException;
 import com.udemy.employeemanagementsystem.listener.DataChangeListener;
 import com.udemy.employeemanagementsystem.model.entities.Department;
 import com.udemy.employeemanagementsystem.model.services.DepartmentService;
@@ -23,6 +25,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class DepartmentListController implements Initializable, DataChangeListener {
@@ -45,6 +48,9 @@ public class DepartmentListController implements Initializable, DataChangeListen
     @FXML
     private TableColumn<Department, Department> tableColumnEdit;
 
+    @FXML
+    private TableColumn<Department, Department> tableColumnDelete;
+
     public void setDepartmentService(DepartmentService departmentService) {
         this.departmentService = departmentService;
     }
@@ -57,22 +63,6 @@ public class DepartmentListController implements Initializable, DataChangeListen
         createDialogForm(department, "department-form.fxml", parentStage);
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        initializeNodes();
-    }
-
-    private void initializeNodes() {
-        // initialize table elements
-        departmentIdTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-        departmentNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-
-        Stage stage = (Stage) Main.getMainScene().getWindow();
-
-        // set table view height to window height
-        departmentTableView.prefHeightProperty().bind(stage.heightProperty());
-    }
-
     public void updateTableView() {
         if (departmentService == null) {
             throw new IllegalStateException("Service is null.");
@@ -83,6 +73,7 @@ public class DepartmentListController implements Initializable, DataChangeListen
 
         departmentTableView.setItems(departmentObservableList);
         initEditButtons();
+        initRemoveButtons();
     }
 
     private void createDialogForm(Department department, String viewPath, Stage parentStage) {
@@ -129,8 +120,60 @@ public class DepartmentListController implements Initializable, DataChangeListen
         });
     }
 
+    private void initRemoveButtons() {
+        tableColumnDelete.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
+        tableColumnDelete.setCellFactory(param -> new TableCell<Department, Department>() {
+            private final Button button = new Button("remove");
+            @Override
+            protected void updateItem(Department obj, boolean empty) {
+                super.updateItem(obj, empty);
+                if (obj == null) {
+                    setGraphic(null);
+                    return;
+                }
+                setGraphic(button);
+                button.setOnAction(event -> removeEntity(obj));
+            }
+        });
+    }
+
+    private void removeEntity(Department obj) {
+        Optional<ButtonType> confirmation = Alerts.showConfirmation("Confirm action", "Delete this department?");
+
+        if (confirmation.get() == ButtonType.OK) {
+            if (departmentService == null) {
+                throw new IllegalStateException("No service was found.");
+            }
+
+            try {
+                departmentService.remove(obj);
+                updateTableView();
+            }
+            catch (DbIntegrityException e) {
+                Alerts.showAlert("Error removing Department", null, e.getMessage(), Alert.AlertType.ERROR);
+            }
+
+        }
+    }
+
     @Override
     public void onDataChanged() {
         updateTableView();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        initializeNodes();
+    }
+
+    private void initializeNodes() {
+        // initialize table elements
+        departmentIdTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        departmentNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+        Stage stage = (Stage) Main.getMainScene().getWindow();
+
+        // set table view height to window height
+        departmentTableView.prefHeightProperty().bind(stage.heightProperty());
     }
 }
