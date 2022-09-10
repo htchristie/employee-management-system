@@ -2,16 +2,21 @@ package com.udemy.employeemanagementsystem.controller;
 
 import com.udemy.employeemanagementsystem.db.DbException;
 import com.udemy.employeemanagementsystem.listener.DataChangeListener;
+import com.udemy.employeemanagementsystem.model.entities.Department;
 import com.udemy.employeemanagementsystem.model.entities.Employee;
 import com.udemy.employeemanagementsystem.model.exceptions.ValidationException;
+import com.udemy.employeemanagementsystem.model.services.DepartmentService;
 import com.udemy.employeemanagementsystem.model.services.EmployeeService;
 import com.udemy.employeemanagementsystem.util.Alerts;
 import com.udemy.employeemanagementsystem.util.Constraints;
 import com.udemy.employeemanagementsystem.util.Utils;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.util.Callback;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -23,6 +28,8 @@ public class EmployeeFormController implements Initializable {
 
     private Employee employee;
     private EmployeeService service;
+
+    private DepartmentService departmentService;
     private List<DataChangeListener> listeners = new ArrayList<>();
 
     @FXML
@@ -39,6 +46,9 @@ public class EmployeeFormController implements Initializable {
 
     @FXML
     private TextField txtEmpSalary;
+
+    @FXML
+    private ComboBox<Department> comboBoxDep;
 
     @FXML
     private Label labelEmpNameError;
@@ -58,12 +68,16 @@ public class EmployeeFormController implements Initializable {
     @FXML
     private Button btnEmpCancel;
 
+    private ObservableList<Department> observableListDep;
+
     public void setEmployee(Employee entity) {
         this.employee = entity;
     }
 
-    public void setEmployeeService(EmployeeService service) {
-        this.service = service;
+    public void setServices(EmployeeService employeeService, DepartmentService departmentService) {
+
+        this.service = employeeService;
+        this.departmentService = departmentService;
     }
 
     public void assignDataChangeListener(DataChangeListener listener) {
@@ -107,6 +121,7 @@ public class EmployeeFormController implements Initializable {
         Constraints.setTextFieldMaxLength(txtEmpEmail, 60);
         Utils.formatDatePicker(txtEmpBirthdate, "dd/MM/yyyy");
         Constraints.setTextFieldDouble(txtEmpSalary);
+        initializeComboBoxDep();
     }
 
     public void updateFormData() {
@@ -122,6 +137,12 @@ public class EmployeeFormController implements Initializable {
 
         if (employee.getBirthdate() != null) {
             txtEmpBirthdate.setValue(LocalDate.ofInstant(employee.getBirthdate().toInstant(), ZoneId.systemDefault()));
+        }
+
+        if (employee.getDepartment() == null) {
+            comboBoxDep.getSelectionModel().selectFirst();
+        } else {
+            comboBoxDep.setValue(employee.getDepartment());
         }
     }
 
@@ -156,6 +177,28 @@ public class EmployeeFormController implements Initializable {
         for (DataChangeListener listener: listeners) {
             listener.onDataChanged();
         }
+    }
+
+    public void loadAssociatedObjects() {
+        if (departmentService == null) {
+            throw new IllegalStateException("Department Service is null.");
+        }
+
+        List<Department> departmentList = departmentService.findAll();
+        observableListDep = FXCollections.observableArrayList(departmentList);
+        comboBoxDep.setItems(observableListDep);
+    }
+
+    private void initializeComboBoxDep() {
+        Callback<ListView<Department>, ListCell<Department>> factory = lv -> new ListCell<Department>() {
+            @Override
+            protected void updateItem(Department item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty ? "" : item.getName());
+            }
+        };
+        comboBoxDep.setCellFactory(factory);
+        comboBoxDep.setButtonCell(factory.call(null));
     }
 
 

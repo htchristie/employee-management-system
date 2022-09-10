@@ -4,6 +4,7 @@ import com.udemy.employeemanagementsystem.Main;
 import com.udemy.employeemanagementsystem.db.DbIntegrityException;
 import com.udemy.employeemanagementsystem.listener.DataChangeListener;
 import com.udemy.employeemanagementsystem.model.entities.Employee;
+import com.udemy.employeemanagementsystem.model.services.DepartmentService;
 import com.udemy.employeemanagementsystem.model.services.EmployeeService;
 import com.udemy.employeemanagementsystem.util.Alerts;
 import com.udemy.employeemanagementsystem.util.Utils;
@@ -61,6 +62,7 @@ public class EmployeeListController implements Initializable, DataChangeListener
     private TableColumn<Employee, Employee> tableColumnDelete;
 
     public void setEmployeeService(EmployeeService employeeService) {
+
         this.employeeService = employeeService;
     }
 
@@ -92,7 +94,8 @@ public class EmployeeListController implements Initializable, DataChangeListener
 
             EmployeeFormController controller = loader.getController();
             controller.setEmployee(employee);
-            controller.setEmployeeService(new EmployeeService());
+            controller.setServices(new EmployeeService(), new DepartmentService());
+            controller.loadAssociatedObjects();
             controller.assignDataChangeListener(this);
             controller.updateFormData();
 
@@ -105,7 +108,7 @@ public class EmployeeListController implements Initializable, DataChangeListener
             dialogStage.showAndWait();
         }
         catch (IOException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
             Alerts.showAlert("IO Exception", "Error loading View", e.getMessage(), Alert.AlertType.ERROR);
         }
     }
