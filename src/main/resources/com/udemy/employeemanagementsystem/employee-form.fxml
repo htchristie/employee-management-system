@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="229.0" prefWidth="626.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.udemy.employeemanagementsystem.controller.EmployeeFormController">
+<AnchorPane prefHeight="229.0" prefWidth="626.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.udemy.employeemanagementsystem.controller.EmployeeFormController">
     <children>
         <GridPane layoutX="23.0" layoutY="44.0" prefHeight="265.0" prefWidth="575.0" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="24.0">
             <columnConstraints>
@@ -50,20 +58,26 @@
                         <Insets left="8.0" />
                     </GridPane.margin></Label>
                 <TextField fx:id="txtEmpEmail" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <Label fx:id="labelEmpEmailError" textFill="#aa2525" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                <Label fx:id="labelEmpEmailError" textFill="#aa2525" GridPane.columnIndex="2" GridPane.rowIndex="2">
                     <GridPane.margin>
                         <Insets left="8.0" />
                     </GridPane.margin></Label>
                 <DatePicker fx:id="txtEmpBirthdate" prefHeight="25.0" prefWidth="244.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                <Label fx:id="labelEmpBirthdateError" textFill="#aa2525" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                <Label fx:id="labelEmpBirthdateError" textFill="#aa2525" GridPane.columnIndex="2" GridPane.rowIndex="3">
                     <GridPane.margin>
                         <Insets left="8.0" />
                     </GridPane.margin></Label>
                 <TextField fx:id="txtEmpSalary" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                <Label fx:id="labelEmpSalaryError" textFill="#aa2525" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                <Label fx:id="labelEmpSalaryError" textFill="#aa2525" GridPane.columnIndex="2" GridPane.rowIndex="4">
                     <GridPane.margin>
                         <Insets left="8.0" />
                     </GridPane.margin></Label>
+            <Label text="Department:" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets right="8.0" />
+               </GridPane.margin>
+            </Label>
+            <ComboBox fx:id="comboBoxDep" prefHeight="25.0" prefWidth="253.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                 <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
                     <children>
                         <Button fx:id="btnEmpSave" mnemonicParsing="false" onAction="#onBtnDepSaveClick" text="Save">
@@ -74,12 +88,6 @@
                         <Button fx:id="btnEmpCancel" mnemonicParsing="false" onAction="#onBtnDepCancelClick" text="Cancel" />
                     </children>
                 </HBox>
-            <Label text="Department:" GridPane.rowIndex="5">
-               <GridPane.margin>
-                  <Insets right="8.0" />
-               </GridPane.margin>
-            </Label>
-            <ComboBox fx:id="comboBoxDep" prefHeight="25.0" prefWidth="253.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             </children>
         </GridPane>
     </children>

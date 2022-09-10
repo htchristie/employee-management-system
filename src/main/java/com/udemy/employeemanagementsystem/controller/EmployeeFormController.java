@@ -19,6 +19,7 @@ import javafx.scene.control.*;
 import javafx.util.Callback;
 
 import java.net.URL;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
@@ -147,30 +148,58 @@ public class EmployeeFormController implements Initializable {
     }
 
     private Employee getFormData() {
-        Employee dep = new Employee();
+        Employee emp = new Employee();
         ValidationException exception = new ValidationException("Validation error.");
 
-        dep.setId(Utils.parseToInt(txtEmpId.getText()));
+        emp.setId(Utils.parseToInt(txtEmpId.getText()));
 
+        // name
         if (txtEmpName.getText() == null || txtEmpName.getText().trim().equals("")) {
             exception.addError("name", "Field can't be empty.");
         }
 
-        dep.setName(txtEmpName.getText());
+        emp.setName(txtEmpName.getText());
+
+        // email
+        if (txtEmpEmail.getText() == null || txtEmpEmail.getText().trim().equals("")) {
+            exception.addError("email", "Field can't be empty.");
+        }
+
+        emp.setEmail(txtEmpEmail.getText());
+
+        // birthdate
+        if (txtEmpBirthdate.getValue() == null) {
+            exception.addError("birthdate", "Field can't be empty");
+        } else {
+            Instant instant = Instant.from(txtEmpBirthdate.getValue().atStartOfDay(ZoneId.systemDefault()));
+            emp.setBirthdate(Date.from(instant));
+        }
+
+        // salary
+        if (txtEmpSalary.getText() == null || txtEmpSalary.getText().trim().equals("")) {
+            exception.addError("salary", "Field can't be empty.");
+        }
+
+        emp.setBaseSalary(Utils.parseToDouble(txtEmpSalary.getText()));
+
+        // department
+        emp.setDepartment(comboBoxDep.getValue());
+
 
         if (exception.getErrors().size() > 0) {
             throw exception;
         }
 
-        return dep;
+        return emp;
     }
 
     private void setErrorMsgs(Map<String, String> errors) {
         Set<String> fields = errors.keySet();
 
-        if (fields.contains("name")) {
-            labelEmpNameError.setText(errors.get("name"));
-        }
+        labelEmpNameError.setText((fields.contains("name") ? errors.get("name") : ""));
+        labelEmpEmailError.setText((fields.contains("email") ? errors.get("email") : ""));
+        labelEmpBirthdateError.setText((fields.contains("birthdate") ? errors.get("birthdate") : ""));
+        labelEmpSalaryError.setText((fields.contains("salary") ? errors.get("salary") : ""));
     }
 
     private void notifyDataChangeListeners() {

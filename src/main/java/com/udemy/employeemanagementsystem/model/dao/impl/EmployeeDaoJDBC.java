@@ -29,7 +29,7 @@ public class EmployeeDaoJDBC implements EmployeeDao {
 
         try {
             statement = connection.prepareStatement(
-                    "INSERT INTO employee "
+                    "INSERT INTO seller "
                             + "(Name, Email, BirthDate, BaseSalary, DepartmentId) "
                             + "VALUES "
                             + "(?, ?, ?, ?, ?)",
@@ -71,7 +71,7 @@ public class EmployeeDaoJDBC implements EmployeeDao {
 
         try {
             statement = connection.prepareStatement(
-                    "UPDATE employee "
+                    "UPDATE seller "
                             + "SET Name = ?, Email = ?, BirthDate = ?, BaseSalary = ?, DepartmentId = ? "
                             + "WHERE Id = ?"
             );
