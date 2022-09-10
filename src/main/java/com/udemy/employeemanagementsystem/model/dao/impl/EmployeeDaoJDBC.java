@@ -109,7 +109,7 @@ public class EmployeeDaoJDBC implements EmployeeDao {
             int rowsAffected = statement.executeUpdate();
 
             if (rowsAffected == 0) {
-                throw new DbException("No seller was found.");
+                throw new DbException("No employee was found.");
             }
         }
         catch (SQLException e) {
@@ -140,7 +140,7 @@ public class EmployeeDaoJDBC implements EmployeeDao {
 
             if (resultSet.next()) {
                 Department department = instantiateDepartment(resultSet);
-                return instantiateSeller(resultSet, department);
+                return instantiateEmployee(resultSet, department);
             }
             return null;
         }
@@ -183,7 +183,7 @@ public class EmployeeDaoJDBC implements EmployeeDao {
                     departmentMap.put(resultSet.getInt("DepartmentId"), dep);
                 }
 
-                Employee employee = instantiateSeller(resultSet, dep);
+                Employee employee = instantiateEmployee(resultSet, dep);
                 employees.add(employee);
             }
             return employees;
@@ -228,7 +228,7 @@ public class EmployeeDaoJDBC implements EmployeeDao {
                     departmentMap.put(resultSet.getInt("DepartmentId"), dep);
                 }
 
-                Employee employee = instantiateSeller(resultSet, dep);
+                Employee employee = instantiateEmployee(resultSet, dep);
                 employees.add(employee);
             }
             return employees;
@@ -242,13 +242,13 @@ public class EmployeeDaoJDBC implements EmployeeDao {
         }
     }
 
-    private Employee instantiateSeller(ResultSet resultSet, Department department) throws SQLException {
+    private Employee instantiateEmployee(ResultSet resultSet, Department department) throws SQLException {
         Employee employee = new Employee();
         employee.setId(resultSet.getInt("Id"));
         employee.setName(resultSet.getString("Name"));
         employee.setEmail(resultSet.getString("Email"));
         employee.setBaseSalary(resultSet.getDouble("BaseSalary"));
-        employee.setBirthdate(resultSet.getDate("BirthDate"));
+        employee.setBirthdate(new java.util.Date(resultSet.getTimestamp("BirthDate").getTime()));
         employee.setDepartment(department);
 
         return employee;

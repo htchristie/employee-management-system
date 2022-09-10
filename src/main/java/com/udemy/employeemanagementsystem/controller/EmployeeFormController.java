@@ -11,12 +11,11 @@ import com.udemy.employeemanagementsystem.util.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.*;
 
 public class EmployeeFormController implements Initializable {
@@ -36,7 +35,7 @@ public class EmployeeFormController implements Initializable {
     private TextField txtEmpEmail;
 
     @FXML
-    private TextField txtEmpBirthdate;
+    private DatePicker txtEmpBirthdate;
 
     @FXML
     private TextField txtEmpSalary;
@@ -104,7 +103,10 @@ public class EmployeeFormController implements Initializable {
 
     private void initializeNodes() {
         Constraints.setTextFieldInteger(txtEmpId);
-        Constraints.setTextFieldMaxLength(txtEmpName, 30);
+        Constraints.setTextFieldMaxLength(txtEmpName, 70);
+        Constraints.setTextFieldMaxLength(txtEmpEmail, 60);
+        Utils.formatDatePicker(txtEmpBirthdate, "dd/MM/yyyy");
+        Constraints.setTextFieldDouble(txtEmpSalary);
     }
 
     public void updateFormData() {
@@ -114,6 +116,13 @@ public class EmployeeFormController implements Initializable {
 
         txtEmpId.setText(String.valueOf(employee.getId()));
         txtEmpName.setText(String.valueOf(employee.getName()));
+        txtEmpEmail.setText(String.valueOf(employee.getEmail()));
+        Locale.setDefault(Locale.US);
+        txtEmpSalary.setText(String.format("%.2f", employee.getBaseSalary()));
+
+        if (employee.getBirthdate() != null) {
+            txtEmpBirthdate.setValue(LocalDate.ofInstant(employee.getBirthdate().toInstant(), ZoneId.systemDefault()));
+        }
     }
 
     private Employee getFormData() {
@@ -148,6 +157,7 @@ public class EmployeeFormController implements Initializable {
             listener.onDataChanged();
         }
     }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
